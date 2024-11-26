@@ -35,7 +35,9 @@ namespace Tracking__Time__and_Sound
         {
             // TODO: Add your initialization logic here
 
+           
             exploded = false;
+
             base.Initialize();
             explosionRect = new Rectangle(50, 50, 700, 400);
             bombRect = new Rectangle(50, 50, 700, 400);
@@ -71,6 +73,11 @@ namespace Tracking__Time__and_Sound
             }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            
+            if (seconds > 10 && exploded)
+            {
+                Exit();
+            }
 
             // TODO: Add your update logic here
 
@@ -88,8 +95,12 @@ namespace Tracking__Time__and_Sound
             _spriteBatch.DrawString(timeFont, (15 - seconds).ToString("00.0"), new Vector2(270, 200), Color.Black);
             
             if (exploded)
+            {
                 _spriteBatch.Draw(explosionTexture, explosionRect, Color.White);
-           
+                
+            }
+              
+         
             
 
             
