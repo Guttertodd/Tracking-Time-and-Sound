@@ -23,6 +23,7 @@ namespace Tracking__Time__and_Sound
 
         bool exploded;
 
+        MouseState mouseState;
         
         public Game1()
         {
@@ -63,6 +64,7 @@ namespace Tracking__Time__and_Sound
         }
 
         protected override void Update(GameTime gameTime)
+            
         {
             seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (seconds > 15)
@@ -81,6 +83,12 @@ namespace Tracking__Time__and_Sound
 
             // TODO: Add your update logic here
 
+            mouseState = Mouse.GetState();
+
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                seconds = 0f;
+            }
             base.Update(gameTime);
         }
 
